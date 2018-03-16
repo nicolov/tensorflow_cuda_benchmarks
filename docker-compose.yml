@@ -1,0 +1,18 @@
+version: '3'
+services:
+  builder:
+    build: .
+    devices:
+      - /dev/nvidia0
+      - /dev/nvidia1
+      - /dev/nvidiactl
+      - /dev/nvidia-uvm
+      - /dev/nvidia-uvm-tools
+    volumes:
+      - .:/src
+      - nvidia_driver_384.98:/usr/local/nvidia:ro
+    working_dir: /src
+volumes:
+  media: null
+  nvidia_driver_384.98:
+    external: true
